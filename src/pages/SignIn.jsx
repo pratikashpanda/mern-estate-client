@@ -37,7 +37,7 @@ const SignIn = () => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       if (data.success === false) {
         // setLoading(false);
         // setError(data.message);
@@ -55,7 +55,7 @@ const SignIn = () => {
     }
   };
 
-  console.log(formData);
+  // console.log(formData);
 
   return (
     <div className="p-3 max-w-lg mx-auto">
