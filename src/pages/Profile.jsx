@@ -21,6 +21,7 @@ import {
   signoutUserSuccess
 } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
+import {Link} from 'react-router-dom'
 
 const Profile = () => {
   const fileRef = useRef(null);
@@ -180,16 +181,38 @@ const Profile = () => {
           className="border p-3 rounded-lg"
           onChange={handleChange}
         />
-        <button disabled={loading} className="border bg-blue-900 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
+        <button
+          disabled={loading}
+          className="border bg-blue-900 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
+        >
           {loading ? "loading..." : "update"}
         </button>
+        <Link
+          to={"/create-listing"}
+          className="border bg-green-700 p-3 rounded-lg uppercase text-white hover:opacity-95 text-center "
+        >
+          {" "}
+          create listing
+        </Link>
       </form>
       <div className="flex justify-between mt-5">
-        <span onClick={handleDeleteUser} className="text-red-700 cursor-pointer">Delete Account</span>
-        <span onClick={handleSignOutUser} className="text-red-700 cursor-pointer">Sign Out</span>
+        <span
+          onClick={handleDeleteUser}
+          className="text-red-700 cursor-pointer"
+        >
+          Delete Account
+        </span>
+        <span
+          onClick={handleSignOutUser}
+          className="text-red-700 cursor-pointer"
+        >
+          Sign Out
+        </span>
       </div>
-      <p className="text-red-700 mt-5 uppercase">{error ? error : ''}</p>
-      <p className="text-green-700 mt-5">{updateSuccess ? 'User update successful': ''}</p>
+      <p className="text-red-700 mt-5 uppercase">{error ? error : ""}</p>
+      <p className="text-green-700 mt-5">
+        {updateSuccess ? "User update successful" : ""}
+      </p>
     </div>
   );
 };
