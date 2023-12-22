@@ -154,14 +154,14 @@ const Profile = () => {
       });
 
       const data = await res.json();
-      if(data.success === false){
-        console.log(error.message)
+      if (data.success === false) {
+        console.log(error.message);
         return;
       }
 
       setUserListings((prev) => {
-        prev.filter((listing) => listing._id != listingId)
-      })
+        prev.filter((listing) => listing._id != listingId);
+      });
     } catch (error) {
       console.log(error.message);
     }
@@ -282,14 +282,16 @@ const Profile = () => {
               >
                 <p>{listing.name}</p>
               </Link>
-              <div className="flex flex-col">
+              <div className="flex flex-col items-center">
                 <button
                   onClick={() => handleDeleteListing(listing._id)}
                   className="text-red-700 uppercase"
                 >
                   Delete
                 </button>
-                <button className="text-green-700 uppercase">Edit</button>
+                <Link to={`/update-listing/${listing._id}`}>
+                  <button className="text-green-700 uppercase">Edit</button>
+                </Link>
               </div>
             </div>
           ))}
